@@ -230,6 +230,8 @@ func (d *Differ) diff(path []string, a, b reflect.Value, parent interface{}) err
 		}
 	}
 
+	a, b = reflect.Indirect(a), reflect.Indirect(b)
+	
 	// check if types match or are
 	if invalid(a, b) {
 		if d.AllowTypeMismatch {
